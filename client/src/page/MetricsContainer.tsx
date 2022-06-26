@@ -45,7 +45,7 @@ const MetricsContainer = () => {
   })
 
   return (
-    <Container>
+    <Container className="fadeIn">
       <div>
         <strong>
           <span ref={travelerRef}>350</span>만 명

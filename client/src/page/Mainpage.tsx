@@ -9,9 +9,11 @@ import MetricsContainer from './MetricsContainer'
 const fadeIn = keyframes`
   from {
     opacity: 0;
+    margin-top: 10px;
   }
   to {
     opacity: 1;
+    margin-top: 0px;
   }
 `
 const SectionContainer = styled.div`
