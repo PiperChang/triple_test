@@ -2,6 +2,8 @@
 트리플 과제 테스트
 
 # 프로젝트 실행 방법
+`npm run start`
+
 ### 실행 순서
 - Setting(ESLint, Prettier)
 - MarkUp & Styling
