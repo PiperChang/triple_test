@@ -23,19 +23,23 @@ const MetricsContainer = () => {
 
   useEffect(() => {
     refList.forEach((ref) => {
-      let count = 0
       if (ref.current !== null) {
         const max = parseInt(ref.current.innerHTML)
-        const a = setInterval(() => {
+        let percent = 1
+        let cnt = 0
+        const slowInterval = setInterval(() => {
           if (ref.current !== null) {
-            if (count < max) {
-              count += 1
-              ref.current.innerText = count.toString()
+            if (cnt >= max) {
+              clearInterval(slowInterval)
             } else {
-              clearInterval(a)
+              // eslint-disable-next-line no-console
+              console.log(new Date().getTime())
+              percent = percent / 1.1
+              cnt = Math.ceil(max * (1 - percent))
+              ref.current.innerText = cnt.toString()
             }
           }
-        }, 10)
+        }, 30)
       }
     })
   })
@@ -44,21 +48,21 @@ const MetricsContainer = () => {
     <Container>
       <div>
         <strong>
-          <span ref={travelerRef}>700</span>만 명
+          <span ref={travelerRef}>350</span>만 명
         </strong>
-        의 여행자
+        의 사용자
       </div>
       <div>
         <strong>
-          <span ref={reviewRef}>100</span>만 개
+          <span ref={reviewRef}>21</span>만 개
         </strong>
-        의 여행 리뷰
+        의 리뷰
       </div>
       <div>
         <strong>
-          <span ref={scheduleRef}>470</span>만 개
+          <span ref={scheduleRef}>650</span>만 개
         </strong>
-        의 여행 일정
+        의 저장
       </div>
     </Container>
   )
