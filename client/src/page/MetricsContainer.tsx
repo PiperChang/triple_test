@@ -24,18 +24,21 @@ const MetricsContainer = () => {
   useEffect(() => {
     refList.forEach((ref) => {
       let count = 0
+      let percent = 1
       if (ref.current !== null) {
         const max = parseInt(ref.current.innerHTML)
         const a = setInterval(() => {
           if (ref.current !== null) {
             if (count < max) {
-              count += 1
+              count = Math.ceil(max * (1 - percent))
+              percent = percent / 2
+              // 동일 %씩 올리자
               ref.current.innerText = count.toString()
             } else {
               clearInterval(a)
             }
           }
-        }, 10)
+        }, 250)
       }
     })
   })
