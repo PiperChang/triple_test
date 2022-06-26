@@ -1,4 +1,4 @@
-import Mainpage from './page/Mainpage'
+import Mainpage from './page/Mainpage/Mainpage'
 
 import './App.css'
 

@@ -1,21 +1,8 @@
 import { useEffect, useRef } from 'react'
-import styled from 'styled-components'
 
-const Container = styled.div`
-  margin-left: 623px;
-  padding-top: 150px;
-  animation-delay: 100ms;
-  div {
-    font-size: 36px;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-  }
-  strong {
-    font-weight: bold;
-  }
-`
+import { MetricsContainer } from './MainpageDesign'
 
-const MetricsContainer = () => {
+const MetricsSection = () => {
   const travelerRef = useRef<HTMLInputElement>(null)
   const reviewRef = useRef<HTMLInputElement>(null)
   const scheduleRef = useRef<HTMLInputElement>(null)
@@ -32,8 +19,6 @@ const MetricsContainer = () => {
             if (cnt >= max) {
               clearInterval(slowInterval)
             } else {
-              // eslint-disable-next-line no-console
-              console.log(new Date().getTime())
               percent = percent / 1.1
               cnt = Math.ceil(max * (1 - percent))
               ref.current.innerText = cnt.toString()
@@ -45,7 +30,7 @@ const MetricsContainer = () => {
   })
 
   return (
-    <Container className="fadeIn">
+    <MetricsContainer className="fadeIn">
       <div>
         <strong>
           <span ref={travelerRef}>350</span>만 명
@@ -64,8 +49,8 @@ const MetricsContainer = () => {
         </strong>
         의 저장
       </div>
-    </Container>
+    </MetricsContainer>
   )
 }
 
-export default MetricsContainer
+export default MetricsSection

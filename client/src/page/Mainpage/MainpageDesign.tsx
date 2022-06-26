@@ -1,20 +1,16 @@
 import styled, { keyframes } from 'styled-components'
 
-import logo from '../assets/triple2x.png'
-import googlePlayStore from '../assets/play-store2x.png'
-import appleAppStore from '../assets/badge-apple4x.png'
-
-import MetricsContainer from './MetricsContainer'
+import logo from '../../assets/triple2x.png'
 
 const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    margin-top: 10px;
-  }
-  to {
-    opacity: 1;
-    margin-top: 0px;
-  }
+from {
+  opacity: 0;
+  margin-top: 10px;
+}
+to {
+  opacity: 1;
+  margin-top: 0px;
+}
 `
 const SectionContainer = styled.div`
   position: relative;
@@ -75,28 +71,25 @@ const AwardsItem = styled.div<AwardItemProps>`
   background-size: 54px 54px;
 `
 
-const Mainpage = () => {
-  return (
-    <SectionContainer>
-      <Section>
-        <ContentLogo className="fadeIn">2021년 12월 기준</ContentLogo>
+const MetricsContainer = styled.div`
+  margin-left: 623px;
+  padding-top: 150px;
+  animation-delay: 100ms;
+  div {
+    font-size: 36px;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+  strong {
+    font-weight: bold;
+  }
+`
 
-        <MetricsContainer />
-        <AwardsContainer className="fadeIn">
-          <AwardsItem src={googlePlayStore}>
-            2018 구글 플레이스토어
-            <br />
-            올해의 앱 최우수상 수상
-          </AwardsItem>
-          <AwardsItem src={appleAppStore}>
-            2018 애플 앱스토어
-            <br />
-            오늘의 여행앱 선정
-          </AwardsItem>
-        </AwardsContainer>
-      </Section>
-    </SectionContainer>
-  )
+export {
+  AwardsItem,
+  AwardsContainer,
+  ContentLogo,
+  Section,
+  SectionContainer,
+  MetricsContainer,
 }
-
-export default Mainpage
