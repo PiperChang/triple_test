@@ -1,9 +1,10 @@
 import styled, { keyframes } from 'styled-components'
-import { useRef } from 'react'
 
 import logo from '../assets/triple2x.png'
 import googlePlayStore from '../assets/play-store2x.png'
 import appleAppStore from '../assets/badge-apple4x.png'
+
+import MetricsContainer from './MetricsContainer'
 
 const fadeIn = keyframes`
   from {
@@ -46,20 +47,6 @@ const ContentLogo = styled.div`
   color: rgba(58, 58, 58, 0.7);
 `
 
-const MetricsContainer = styled.div`
-  margin-left: 623px;
-  padding-top: 150px;
-  animation-delay: 100ms;
-  div {
-    font-size: 36px;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-  }
-  strong {
-    font-weight: bold;
-  }
-`
-
 const AwardsContainer = styled.div`
   margin-left: 623px;
   margin: 50px 0px 140px 623px;
@@ -85,50 +72,14 @@ const AwardsItem = styled.div<AwardItemProps>`
   background-repeat: no-repeat;
   background-size: 54px 54px;
 `
-const Mainpage = () => {
-  const travelerRef = useRef<HTMLInputElement>(null)
-  const reviewRef = useRef<HTMLInputElement>(null)
-  const scheduleRef = useRef<HTMLInputElement>(null)
-  const refList = [travelerRef, reviewRef, scheduleRef]
-  refList.forEach((ref) => {
-    let now = 0
-    let percent = 1
-    if (ref.current !== null) {
-      const maxNum = parseInt(ref.current.innerHTML)
-      setInterval(() => {
-        now = Math.ceil(maxNum * (1 - percent))
-        percent = percent / 2
-        if (ref.current !== null) {
-          ref.current.innerHTML = now.toString()
-        }
-      }, 250)
-    }
-  })
 
+const Mainpage = () => {
   return (
     <SectionContainer>
       <Section>
         <ContentLogo className="fadeIn">2021년 12월 기준</ContentLogo>
-        <MetricsContainer className="fadeIn">
-          <div>
-            <strong>
-              <span ref={travelerRef}>700</span>만 명
-            </strong>
-            의 여행자
-          </div>
-          <div>
-            <strong>
-              <span ref={reviewRef}>100</span>만 개
-            </strong>
-            의 여행 리뷰
-          </div>
-          <div>
-            <strong>
-              <span ref={scheduleRef}>470</span>만 개
-            </strong>
-            의 여행 일정
-          </div>
-        </MetricsContainer>
+
+        <MetricsContainer />
         <AwardsContainer className="fadeIn">
           <AwardsItem src={googlePlayStore}>
             2018 구글 플레이스토어
